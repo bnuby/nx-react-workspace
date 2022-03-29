@@ -1,0 +1,32 @@
+{
+  "root": "libs/placeholder-lib",
+  "sourceRoot": "libs/placeholder-lib/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/placeholder-lib",
+        "main": "libs/placeholder-lib/src/index.ts",
+        "tsConfig": "libs/placeholder-lib/tsconfig.lib.json",
+        "assets": ["libs/placeholder-lib/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/placeholder-lib/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/placeholder-lib"],
+      "options": {
+        "jestConfig": "libs/placeholder-lib/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

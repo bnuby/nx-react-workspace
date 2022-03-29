@@ -1,6 +1,9 @@
 {
   "version": 2,
   "projects": {
+    "native-app": "apps/native-app",
+    "native-app-e2e": "apps/native-app-e2e",
+    "placeholder-lib": "libs/placeholder-lib",
     "react-app": "apps/react-app",
     "react-app-e2e": "apps/react-app-e2e"
   }
