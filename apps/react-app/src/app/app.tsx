@@ -1,17 +1,28 @@
 import styled from 'styled-components';
-import NxWelcome from './nx-welcome';
-import { ShareLibrary } from '@react-workspace/placeholder-lib';
+import { MemoryRouter, Route, Routes } from 'react-router';
+import { Provider } from 'react-redux';
+import { rootStore } from '@react-workspace/placeholder-lib';
+
+import ROUTES from './routes/routes';
 
 const StyledApp = styled.div`
   // Your style here
 `;
 
 export function App() {
+
   return (
-    <StyledApp>
-      <NxWelcome title="react-app" />
-      <h1>{ShareLibrary}</h1>
-    </StyledApp>
+      <StyledApp>
+        <Provider store={rootStore}>
+          <MemoryRouter>
+            <Routes>
+              {
+                ROUTES.map(r => <Route key={r.path} {...r} />)
+              }
+            </Routes>
+          </MemoryRouter>
+        </Provider>
+      </StyledApp>
   );
 }
 

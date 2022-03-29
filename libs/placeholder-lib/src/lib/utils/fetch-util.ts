@@ -1,0 +1,1 @@
+export const JsonPipe = (response: Response) => response.json()
