@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PlaceholderDataType } from '../types';
 
-type PlaceholderSliceState = {
+export type PlaceholderSliceState = {
     data: PlaceholderDataType | null;
 };
 

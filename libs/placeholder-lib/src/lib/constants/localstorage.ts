@@ -1,0 +1,1 @@
+export const HistoryKey = 'HistoryKey';

@@ -1,7 +1,6 @@
-import { PlaceholderDataType, setItem, useAppDispatch } from '@react-workspace/placeholder-lib';
+import { addHistory, PlaceholderDataType, setItem, useAppDispatch } from '@react-workspace/placeholder-lib';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
-import { useTranslation } from "react-i18next";
 import { ROUTE_PATH } from '../constants/routes';
 
 const PlaceholderDiv = styled.div`
@@ -45,6 +44,7 @@ const PlaceholderView =  ({ data }: PlaceholderViewProps) => {
 
     const onPress = () => {
         dispatch(setItem(data));
+        dispatch(addHistory(data.id.toString()));
         navigate(ROUTE_PATH.DETAIL);
     };
 

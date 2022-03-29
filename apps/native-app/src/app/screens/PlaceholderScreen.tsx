@@ -1,8 +1,9 @@
-import { usePlaceholderHook } from '@react-workspace/placeholder-lib';
-import React from 'react';
+import { HistoryKey, setHistories, useAppDispatch, usePlaceholderHook } from '@react-workspace/placeholder-lib';
+import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import PageHeader from '../components/PageHeader';
 import PlaceholderView from '../components/PlaceholderView';
+import LocalStorageUtil from '../utils/localStorage';
 
 const PlaceholderScreen = () => {
     const {
@@ -11,6 +12,15 @@ const PlaceholderScreen = () => {
         loading
       }
     } = usePlaceholderHook();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+    LocalStorageUtil.GetArrayValue(HistoryKey).then(i => {
+      dispatch(setHistories(i));
+    })
+    }, [dispatch]);
+
+
     let widget = <Text>Loading</Text>
     if (!loading) widget = (<View
             style={styles.view}
@@ -23,6 +33,7 @@ const PlaceholderScreen = () => {
             />}
         />
     </View>)
+
     return <PageHeader
         title='Home Page'
     >

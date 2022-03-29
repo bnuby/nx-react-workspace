@@ -1,12 +1,18 @@
-import { usePlaceholderHook } from "@react-workspace/placeholder-lib";
-import { ReactNode } from "react";
+import { HistoryKey, setHistories, useAppDispatch, usePlaceholderHook } from "@react-workspace/placeholder-lib";
+import { ReactNode, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 import PlaceholderView from "../components/PlaceholderView";
+import LocalStorageUtil from "../utils/localStorage";
 
 const PlaceholderPage = () => {
     const {
         state: { data, loading },
       } = usePlaceholderHook();
+      const dispatch = useAppDispatch();
+
+      useEffect(() => {
+        dispatch(setHistories(LocalStorageUtil.GetArrayValue(HistoryKey)));
+      }, [dispatch]);
 
       let widget: ReactNode = <span>Loading</span>;
       if (!loading) widget = (

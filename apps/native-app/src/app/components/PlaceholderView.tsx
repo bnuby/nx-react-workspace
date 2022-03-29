@@ -1,5 +1,5 @@
-import { PlaceholderDataType, setItem, useAppDispatch } from "@react-workspace/placeholder-lib";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { addHistory, PlaceholderDataType, setItem, useAppDispatch } from "@react-workspace/placeholder-lib";
+import { Pressable, StyleSheet, Text } from "react-native";
 import { useNavigate } from "react-router";
 import { ROUTE_PATH } from "../constants/routes";
 
@@ -13,6 +13,7 @@ const PlaceholderView = ({data}: PlaceholderViewProps) => {
     const dispatch = useAppDispatch();
     const onPress = () => {
         dispatch(setItem(data));
+        dispatch(addHistory(data.id.toString()));
         navigate(ROUTE_PATH.DETAIL);
     }
 
